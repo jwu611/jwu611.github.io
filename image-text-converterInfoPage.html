@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>OCR Image to Text Converter Info</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header" class="wrapper">
+
+					<!-- Logo -->
+						<div id="logo">
+							<h1><a href="index.html">OCR IMAGE TO TEXT CONVERTER</a></h1>
+							<p  style="margin-left:180; margin-right: 180;">A web application that identifies English handwritten letters in an image and outputs
+                                them in text formatted similarly to the image. </p>
+						</div>
+
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Projects</a></li>
+								<li><a href="roomsInfoPage.html">Rooms Game</a></li>
+                                <li><a href="image-text-converterInfoPage.html">OCR Image to Text Converter</a></li>
+							</ul>
+						</nav>
+
+				</section>
+
+			<!-- Main -->
+				<div id="main" class="wrapper style2">
+					<div class="title">About</div>
+					<div class="container">
+                        <p>
+                            This application uses Python's OpenCV library to process an image, a 
+                            Pytorch machine learning classification model to identify the letters in the image, Python to output
+                            the letters in text formatted similarly to the image, and Flask to build the web application. 
+
+                        </p>
+
+						<!-- Content -->
+							<div id="content">
+								<article class="box post">
+									<header class="style1">
+										<p>Demo</p>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/6r8Sr_cG5UI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</header>
+                                    <header class="style1" style="margin-top: 60px;">
+										<p>Development</p>
+									</header>
+                                    <header class="style1">
+										<p>Machine Learning Classifier</p>
+									</header>
+                                    <p>
+                                        To identify the letters in the uploaded image, a Pytorch classification model was trained for Optical Character Recognition (OCR).
+                                        <br><br>
+                                        The classifier uses transfer learning with a pretrained Resnet34 Convolutional Neural Network (CNN). To train the model, ~1200 samples for each letter from a Kaggle dataset for English handwritten capitalized letters (A-Z)
+                                        (https://www.kaggle.com/sachinpatel21/az-handwritten-alphabets-in-csv-format) were used. 
+                                        <br><br>
+                                        Due to lack of available datasets, the app is only able to recognize capital letters.
+
+									</p>
+
+                                    <header class="style1" style="margin-top: 60px;">
+										<p>Image Processing</p>
+									</header>
+									<p>
+                                        Before being input to the machine learning model to identify letters, each uploaded image is processed using grayscaling, Gaussian blurring, and finally thresholding
+                                        to reduce noise. 
+                                        <br><br>
+                                        Under the assumption that only letters are in the image, Canny Edge Detection is performed and contours of the letters are found on the edge map. Using coordinates of the bounding boxes from the contours, 
+                                        each individual letter is extracted, resized, and bordered to the dimensions of the training samples (28x28 pixels). Then, each letter is input to the classifier to be identified. Having the inputs resemble the training data wherever possible greatly improved the accuracy of classification. 
+                                        <br><br>
+                                        All of the image processing operations are done using Python's OpenCV library
+
+									</p>
+									
+								</article>
+
+
+							</div>
+
+					</div>
+
+				</div>
+
+			<!-- Highlights -->
+				<section id="highlights" class="wrapper style3">
+					<div class="title">Try the Converter</div>
+					<div class="container">
+						<div class="row aln-center" style="margin-left: 3px;">
+
+									<ul class="actions">
+										<li><a href="#" class="button style1" onclick="window.location.href = 'https://ocr-image-to-text-converter.herokuapp.com/';">Try the App</a></li>
+										<li><a href="#" class="button style1" onclick="window.location.href = 'https://github.com/jwu611/OCR-Image-to-Text-Converter';">View Github</a></li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<section id="footer" class="wrapper">
+						<div id="copyright">
+							<ul>
+								<li>&copy; Template Credit: Escape Velocity from <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
